@@ -1,0 +1,35 @@
+# fly.toml - Fly.io configuration for SquishMark
+# See https://fly.io/docs/reference/configuration/ for documentation
+
+app = "squishmark"
+primary_region = "dfw"
+
+[build]
+  dockerfile = "../../squishmark/Dockerfile"  # engine checkout, sibling directory
+  build-target = "prod"
+
+[env]
+  # Four slashes: an absolute path targeting the mounted /data volume.
+  # Three would be relative to the workdir and skip the mount.
+  DATABASE_URL = "sqlite+aiosqlite:////data/squishmark.db"
+  CACHE_TTL_SECONDS = "300"
+  GITHUB_CONTENT_REPO = "xeek-dev/squishmark-content"
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  # Keep one machine warm: the content cache is in-memory, so a stopped
+  # machine wakes cold and loses webhook-warmed content.
+  min_machines_running = 1
+  processes = ["app"]
+
+[[vm]]
+  memory = "256mb"
+  cpu_kind = "shared"
+  cpus = 1
+
+[mounts]
+  source = "squishmark_data"
+  destination = "/data"
