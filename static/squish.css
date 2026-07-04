@@ -224,14 +224,74 @@ html[data-theme="dark"] {
 .home-more { margin-top: 1rem; text-align: right; }
 
 /* ---------- Clay surfaces on shared components ---------- */
+/* Post listings become molded cards instead of a ruled list */
+.posts { display: grid; gap: 1.1rem; }
+.post-item,
+.post-item:last-child {
+    background: var(--color-bg-alt);
+    border: none;
+    border-radius: 26px;
+    padding: 1.2rem 1.5rem;
+    box-shadow: var(--clay-raised-lg);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.post-item:hover { transform: scale(1.012, 0.988); box-shadow: var(--clay-raised); }
+
+/* Tags become little clay pebbles */
+.tag {
+    border: none;
+    border-radius: 999px;
+    padding: 0.22rem 0.7rem;
+    font-weight: 700;
+    box-shadow: var(--clay-raised);
+}
+a.tag:hover { box-shadow: var(--clay-pressed); }
+
+/* Pagination buttons */
+.pagination { border-top: none; }
+.pagination-link {
+    border: none;
+    border-radius: 999px;
+    background: var(--color-bg-alt);
+    box-shadow: var(--clay-raised);
+    font-weight: 600;
+}
+.pagination-link:hover { box-shadow: var(--clay-pressed); }
+.pagination-link.disabled { box-shadow: none; background: transparent; }
+.pagination-info { color: var(--color-text-muted); }
+
 /* Code blocks read as pressed-in clay */
 .main-content pre,
 .main-content div.highlight {
     border-radius: 18px;
     box-shadow: var(--clay-pressed);
+    background: var(--color-code-bg);
 }
 .main-content div.highlight pre {
     box-shadow: none; /* avoid doubling when the highlighter nests pre in a wrapper */
+    border-radius: 18px;
+}
+
+/* Inline code as tiny pressed chips */
+.main-content p code, .main-content li code {
+    border-radius: 8px;
+    padding: 0.1rem 0.4rem;
+}
+
+/* Search dropdown floats as a clay panel */
+.search-dropdown {
+    border-radius: 22px;
+    border: none;
+    box-shadow: var(--clay-raised-lg);
+}
+
+/* Blockquotes as soft inset trays */
+.main-content blockquote {
+    border-left: none;
+    background: var(--color-bg-subtle);
+    border-radius: 18px;
+    padding: 0.9rem 1.3rem;
+    box-shadow: var(--clay-pressed);
 }
 
 /* Share buttons become small clay pebbles */
@@ -257,7 +317,7 @@ html[data-theme="dark"] {
 
 /* ---------- Motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {
-    .squish-btn, .home-card, .post-share .share-btn { transition: none; }
+    .squish-btn, .home-card, .post-share .share-btn, .post-item { transition: none; }
     .squish-btn:hover, .home-card:hover, .squish-btn:active,
-    .post-share .share-btn:hover { transform: none; }
+    .post-share .share-btn:hover, .post-item:hover { transform: none; }
 }
