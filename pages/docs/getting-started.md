@@ -155,13 +155,12 @@ SquishMark verifies the signature against your secret and only acts on push even
 
 ## Optional: preview locally with Docker
 
-Comfortable with Docker? You can run the engine against your repo before (or instead of) deploying. From the engine repo you cloned in the deploy step, build the image once, then point it at your content repo:
+Comfortable with Docker? You can run the engine against your repo before (or instead of) deploying. The published image works on both Intel and Apple Silicon:
 
 ```bash
-docker build -t squishmark .
 docker run -p 8000:8000 \
   -e GITHUB_CONTENT_REPO=your-username/my-blog-content \
-  squishmark
+  ghcr.io/xeek-dev/squishmark:latest
 ```
 
 Open http://localhost:8000 and you should see your post. If your content repo is private, add a GitHub token so the engine can read it:
@@ -170,7 +169,7 @@ Open http://localhost:8000 and you should see your post. If your content repo is
 docker run -p 8000:8000 \
   -e GITHUB_CONTENT_REPO=your-username/my-blog-content \
   -e GITHUB_TOKEN=ghp_your_token_here \
-  squishmark
+  ghcr.io/xeek-dev/squishmark:latest
 ```
 
 You've got a live blog that updates every time you push. From here, [Configuration](/docs/configuration) tunes `config.yml`, [Theming](/docs/theming) changes how it looks, and [Frontmatter](/docs/frontmatter) lists every per-post field.
