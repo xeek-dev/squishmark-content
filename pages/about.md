@@ -1,16 +1,12 @@
 ---
 title: About
+nav_order: 1
 ---
 
-# About This Blog
+# About This Site
 
-This is a sample about page. Edit it to tell visitors about yourself or your blog.
+This is the official site for [SquishMark](https://github.com/xeek-dev/squishmark), a lightweight blogging engine that uses GitHub as a CMS. Your content lives in a Git repository, giving you version control, collaboration features, and the ability to write posts from anywhere.
 
-## About SquishMark
+Fittingly, this site runs on SquishMark itself: every page you see here is Markdown in the [squishmark-content](https://github.com/xeek-dev/squishmark-content) repo, fetched and rendered at request time.
 
-[SquishMark](https://github.com/xeek-dev/squishmark) is a lightweight blogging engine that uses GitHub as a CMS. Your content lives in a Git repository, giving you version control, collaboration features, and the ability to write posts from anywhere.
-
-## Contact
-
-- GitHub: [your-username](https://github.com/your-username)
-- Email: you@example.com
+The site is under construction. Documentation and release posts are on the way.

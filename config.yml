@@ -1,12 +1,13 @@
 site:
-  title: "My SquishMark Blog"
-  description: "A blog powered by SquishMark"
-  author: "Your Name"
-  url: "https://yourdomain.com"
+  title: "SquishMark"
+  tagline: "the squishy GitHub-powered blog engine"
+  description: "SquishMark is a lightweight blogging engine that renders Markdown straight from a GitHub repo. This is its official site, running on SquishMark itself."
+  author: "Xeek"
+  url: "https://squishmark.xeek.dev"
 
 theme:
   name: default
-  pygments_style: monokai
+  pygments_style: github-dark
 
 posts:
   per_page: 10
