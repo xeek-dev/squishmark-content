@@ -3,9 +3,8 @@ title: Welcome to squishmark.xeek.dev
 date: 2026-07-04
 tags: [squishmark, meta]
 featured: true
+description: "The official SquishMark site is live, and it runs on SquishMark itself."
 ---
-
-# Welcome to squishmark.xeek.dev
 
 This is the official site for SquishMark, and it runs on SquishMark itself. Every post and page here is a Markdown file in a public GitHub repo, fetched and rendered at request time by the engine.
 
