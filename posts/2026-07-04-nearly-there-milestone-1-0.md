@@ -4,7 +4,7 @@ date: 2026-07-04
 tags: [release]
 description: "Why I built a Markdown blog engine in Python, what it can do now, and the short list left before I call it 1.0."
 featured: true
-featured_order: 3
+featured_order: 2
 ---
 
 I didn't set out to build a blog engine. I set out to have a website: a home for my projects as they evolve, and a place to write about tech when the mood hits. What I wanted from it was simple. Write Markdown, push it, see it online.

@@ -6,6 +6,21 @@ description: "Release history for SquishMark, newest first. What changed in each
 
 Release history, newest first. Each entry links to its full notes on GitHub. Want the story behind a release? The [blog](/) has posts on the bigger ones.
 
+## [1.0.0](https://github.com/xeek-dev/squishmark/releases/tag/v1.0.0)
+
+Released 2026-07-04. The milestone release. The features all landed in the versions below; 1.0.0 makes it official and changes how version numbers work from here on out.
+
+- Routine updates now bump only the patch number (1.0.1, 1.0.2, and so on); minor and major versions are deliberate decisions, not side effects
+- Minor and major releases deploy to this site automatically; patches roll out when they've proven themselves
+
+## [0.7.0](https://github.com/xeek-dev/squishmark/releases/tag/v0.7.0)
+
+Released 2026-07-04. A polish pass on the blue-tech theme, plus a fix every theme benefited from.
+
+- Blue-tech's homepage navbar quiets down since the hero already announces the site
+- Post footers across all three themes lost a doubled-up divider line
+- Container images publish for every release, so you can pin the exact version you run
+
 ## [0.6.0](https://github.com/xeek-dev/squishmark/releases/tag/v0.6.0)
 
 Released 2026-07-04. Two caching fixes that make "push it and it's live" true for everyone, plus pages grew an optional table of contents.
