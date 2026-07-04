@@ -9,4 +9,4 @@ This is the official site for [SquishMark](https://github.com/xeek-dev/squishmar
 
 Fittingly, this site runs on SquishMark itself: every page you see here is Markdown in the [squishmark-content](https://github.com/xeek-dev/squishmark-content) repo, fetched and rendered at request time.
 
-The site is under construction. Documentation and release posts are on the way.
+The site is under construction. Documentation and release posts are on the way. Content changes here go live within seconds of a push, via webhook.
