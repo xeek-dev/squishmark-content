@@ -1,0 +1,12 @@
+site:
+  title: "My SquishMark Blog"
+  description: "A blog powered by SquishMark"
+  author: "Your Name"
+  url: "https://yourdomain.com"
+
+theme:
+  name: default
+  pygments_style: monokai
+
+posts:
+  per_page: 10
