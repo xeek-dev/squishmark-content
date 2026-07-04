@@ -1,6 +1,6 @@
 # squishmark-content
 
-Content for [squishmark.xeek.dev](https://squishmark.xeek.dev), the official SquishMark site. The site runs on [SquishMark](https://github.com/xeek-dev/squishmark) itself and renders this repository at request time.
+Content for [squishmark.dev](https://squishmark.dev), the official SquishMark site. The site runs on [SquishMark](https://github.com/xeek-dev/squishmark) itself and renders this repository at request time.
 
 ## Structure
 

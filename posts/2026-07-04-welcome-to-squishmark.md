@@ -1,5 +1,5 @@
 ---
-title: Welcome to squishmark.xeek.dev
+title: Welcome to squishmark.dev
 date: 2026-07-04
 tags: [squishmark, meta]
 featured: true
