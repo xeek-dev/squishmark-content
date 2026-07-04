@@ -27,7 +27,8 @@
     <meta name="twitter:description" content="{% block twitter_description %}{{ site.description }}{% endblock %}">
     <link rel="stylesheet" href="/static/{{ theme_name }}/style.css">
     <link rel="stylesheet" href="{{ pygments_css_url }}">
-    <link rel="stylesheet" href="/static/user/squish.css">
+    <link rel="stylesheet" href="/static/user/squishmark.css">
+    <link rel="stylesheet" href="/static/user/fur.css">
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -37,20 +38,7 @@
     <header class="site-header">
         <nav class="nav-container">
             <a href="/" class="site-title">
-            <svg class="squish-mark" viewBox="0 0 64 58" aria-hidden="true" focusable="false">
-                <g class="mark-fluff">
-                    <path d="M13 18 L20 3 L28 13 Z"/><path d="M51 18 L44 3 L36 13 Z"/>
-                    <circle cx="15" cy="24" r="7"/><circle cx="22" cy="15" r="7"/><circle cx="32" cy="12" r="7"/><circle cx="42" cy="15" r="7"/><circle cx="49" cy="24" r="7"/>
-                    <circle cx="51" cy="35" r="7"/><circle cx="13" cy="35" r="7"/><circle cx="18" cy="45" r="7"/><circle cx="46" cy="45" r="7"/><circle cx="32" cy="49" r="8"/>
-                    <circle cx="32" cy="31" r="21"/>
-                </g>
-                <path class="mark-ear" d="M15 20 L20 8 L26 16 Z"/><path class="mark-ear" d="M49 20 L44 8 L38 16 Z"/>
-                <ellipse class="mark-muzzle" cx="32" cy="40" rx="12" ry="10"/>
-                <circle class="mark-eye" cx="24" cy="28" r="3.2"/><circle class="mark-eye" cx="40" cy="28" r="3.2"/>
-                <circle class="mark-glint" cx="25" cy="27" r="1"/><circle class="mark-glint" cx="41" cy="27" r="1"/>
-                <ellipse class="mark-nose" cx="32" cy="37" rx="4" ry="3"/>
-                <path class="mark-smile" d="M26 44 Q32 49 38 44"/>
-            </svg>
+                <img class="squish-mark" src="/static/user/squish-logo.svg" alt="">
                 <span class="site-title-text">
                     <span class="site-name">{{ site.title }}</span>
                     {% if site.tagline %}<span class="site-tagline">{{ site.tagline }}</span>{% endif %}

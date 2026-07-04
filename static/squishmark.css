@@ -39,13 +39,6 @@
     --mark-ear:    #4a2c17;
     --mark-muzzle: #fffaf1;
     --mark-ink:    #241d16;
-
-    /* Clay surface treatment */
-    --clay-shadow:    rgba(122, 84, 52, 0.30);
-    --clay-highlight: rgba(255, 255, 255, 0.85);
-    --clay-raised:    6px 6px 14px var(--clay-shadow), -6px -6px 14px var(--clay-highlight);
-    --clay-raised-lg: 10px 10px 24px var(--clay-shadow), -10px -10px 24px var(--clay-highlight);
-    --clay-pressed:   inset 3px 3px 8px var(--clay-shadow), inset -3px -3px 8px var(--clay-highlight);
 }
 
 /* ---------- Midnight Squish (dark, system preference) ---------- */
@@ -82,12 +75,6 @@
         --mark-ear:    #5c3517;
         --mark-muzzle: #f0e6d6;
         --mark-ink:    #14100c;
-
-        --clay-shadow:    rgba(0, 0, 0, 0.50);
-        --clay-highlight: rgba(255, 226, 180, 0.06);
-        --clay-raised:    6px 6px 14px var(--clay-shadow), -6px -6px 14px var(--clay-highlight);
-        --clay-raised-lg: 10px 10px 24px var(--clay-shadow), -10px -10px 24px var(--clay-highlight);
-        --clay-pressed:   inset 3px 3px 8px var(--clay-shadow), inset -3px -3px 8px var(--clay-highlight);
     }
 }
 
@@ -124,30 +111,18 @@ html[data-theme="dark"] {
     --mark-ear:    #5c3517;
     --mark-muzzle: #f0e6d6;
     --mark-ink:    #14100c;
-
-    --clay-shadow:    rgba(0, 0, 0, 0.50);
-    --clay-highlight: rgba(255, 226, 180, 0.06);
-    --clay-raised:    6px 6px 14px var(--clay-shadow), -6px -6px 14px var(--clay-highlight);
-    --clay-raised-lg: 10px 10px 24px var(--clay-shadow), -10px -10px 24px var(--clay-highlight);
-    --clay-pressed:   inset 3px 3px 8px var(--clay-shadow), inset -3px -3px 8px var(--clay-highlight);
 }
 
-/* ---------- Squish mark ---------- */
-.squish-mark { width: 34px; height: 31px; flex-shrink: 0; }
+/* ---------- Squish mark (traced portrait of Squish) ---------- */
+.squish-mark { height: 36px; width: auto; flex-shrink: 0; }
 .site-title { display: flex; align-items: center; gap: 0.6rem; }
-.mark-fluff  { fill: var(--mark-fluff); }
-.mark-ear    { fill: var(--mark-ear); }
-.mark-muzzle { fill: var(--mark-muzzle); }
-.mark-eye, .mark-nose { fill: var(--mark-ink); }
-.mark-glint  { fill: #ffffff; }
-.mark-smile  { stroke: var(--mark-ink); stroke-width: 2.4; fill: none; stroke-linecap: round; }
 
 /* ---------- Landing hero ---------- */
 .hero {
     text-align: center;
     padding: 3rem 0 2.5rem;
 }
-.hero-mark { width: 108px; height: 98px; }
+.hero-mark { width: 180px; height: auto; }
 .hero-title {
     font-size: 2.6rem;
     letter-spacing: -0.02em;
@@ -170,17 +145,12 @@ html[data-theme="dark"] {
     text-decoration: none;
     padding: 0.7rem 1.5rem;
     border-radius: 999px;
-    box-shadow: var(--clay-raised);
-    transition: transform 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+    transition: transform 0.12s ease, background 0.12s ease;
 }
 .squish-btn:hover {
     background: var(--color-accent-hover);
     color: var(--color-bg-alt);
     transform: scale(1.06, 0.94);
-}
-.squish-btn:active {
-    box-shadow: var(--clay-pressed);
-    transform: scale(0.98, 1.0) translateY(1px);
 }
 .squish-btn-alt { background: var(--color-header-bg); color: var(--color-nav-link-text); }
 .squish-btn-alt:hover { background: var(--color-nav-link-bg-hover); color: var(--color-nav-link-text); }
@@ -202,15 +172,14 @@ html[data-theme="dark"] {
 .home-cards { display: grid; gap: 1rem; }
 .home-card {
     background: var(--color-bg-alt);
-    border: none;
-    border-radius: 26px;
-    padding: 1.3rem 1.5rem;
-    box-shadow: var(--clay-raised-lg);
+    border: 1px solid var(--color-border);
+    border-radius: 18px;
+    padding: 1.2rem 1.4rem;
     transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
 .home-card:hover {
     transform: scale(1.015, 0.985);
-    box-shadow: var(--clay-raised);
+    box-shadow: 0 6px 20px var(--color-accent-subtle-bg);
 }
 .home-card-date {
     font-size: 0.75rem;
@@ -223,101 +192,18 @@ html[data-theme="dark"] {
 .home-card-desc { margin: 0; color: var(--color-text-muted); font-size: 0.95rem; }
 .home-more { margin-top: 1rem; text-align: right; }
 
-/* ---------- Clay surfaces on shared components ---------- */
-/* Post listings become molded cards instead of a ruled list */
-.posts { display: grid; gap: 1.1rem; }
-.post-item,
-.post-item:last-child {
-    background: var(--color-bg-alt);
-    border: none;
-    border-radius: 26px;
-    padding: 1.2rem 1.5rem;
-    box-shadow: var(--clay-raised-lg);
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
-}
-.post-item:hover { transform: scale(1.012, 0.988); box-shadow: var(--clay-raised); }
-
-/* Tags become little clay pebbles */
-.tag {
-    border: none;
-    border-radius: 999px;
-    padding: 0.22rem 0.7rem;
-    font-weight: 700;
-    box-shadow: var(--clay-raised);
-}
-a.tag:hover { box-shadow: var(--clay-pressed); }
-
-/* Pagination buttons */
-.pagination { border-top: none; }
-.pagination-link {
-    border: none;
-    border-radius: 999px;
-    background: var(--color-bg-alt);
-    box-shadow: var(--clay-raised);
-    font-weight: 600;
-}
-.pagination-link:hover { box-shadow: var(--clay-pressed); }
-.pagination-link.disabled { box-shadow: none; background: transparent; }
-.pagination-info { color: var(--color-text-muted); }
-
-/* Code blocks read as pressed-in clay */
-.main-content pre,
-.main-content div.highlight {
-    border-radius: 18px;
-    box-shadow: var(--clay-pressed);
-    background: var(--color-code-bg);
-}
-.main-content div.highlight pre {
-    box-shadow: none; /* avoid doubling when the highlighter nests pre in a wrapper */
-    border-radius: 18px;
-}
-
-/* Inline code as tiny pressed chips */
-.main-content p code, .main-content li code {
-    border-radius: 8px;
-    padding: 0.1rem 0.4rem;
-}
-
-/* Search dropdown floats as a clay panel */
-.search-dropdown {
-    border-radius: 22px;
-    border: none;
-    box-shadow: var(--clay-raised-lg);
-}
-
-/* Blockquotes as soft inset trays */
-.main-content blockquote {
-    border-left: none;
-    background: var(--color-bg-subtle);
-    border-radius: 18px;
-    padding: 0.9rem 1.3rem;
-    box-shadow: var(--clay-pressed);
-}
-
-/* Share buttons become small clay pebbles */
-.post-share .share-btn {
-    border-radius: 999px;
-    box-shadow: var(--clay-raised);
-    border: none;
-    transition: box-shadow 0.12s ease, transform 0.12s ease;
-}
-.post-share .share-btn:hover { transform: scale(1.08, 0.92); }
-.post-share .share-btn:active { box-shadow: var(--clay-pressed); }
-
-/* Notes and TOC panels get the soft raised look */
-.main-content .post-toc,
-.main-content .content-note {
-    border-radius: 22px;
-    box-shadow: var(--clay-raised);
-    border: none;
-}
-
 /* ---------- Footer tribute ---------- */
 .footer-tribute { color: var(--color-text-muted); font-size: 0.8rem; font-style: italic; }
 
 /* ---------- Motion preferences ---------- */
 @media (prefers-reduced-motion: reduce) {
-    .squish-btn, .home-card, .post-share .share-btn, .post-item { transition: none; }
-    .squish-btn:hover, .home-card:hover, .squish-btn:active,
-    .post-share .share-btn:hover, .post-item:hover { transform: none; }
+    .squish-btn, .home-card { transition: none; }
+    .squish-btn:hover, .home-card:hover { transform: none; }
+}
+
+/* Keep the squish: buttons squash down when pressed */
+.squish-btn:active { transform: scale(0.94, 1.02); }
+
+@media (prefers-reduced-motion: reduce) {
+    .squish-btn:active { transform: none; }
 }

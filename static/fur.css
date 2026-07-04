@@ -1,0 +1,86 @@
+/* ---------- Edge fluff (for Squish) ---------- */
+/* Fluff grows out of a break in the element's edge. Lock heights ease in
+   and out (short lead-in, tall, then tapering) so runs read as natural
+   tussles. The silhouette variant is a CSS mask filled with
+   background:inherit so it matches the element surface in any state;
+   cards add an outline layer in the border color underneath so the fur
+   reads against the page. Ruled separators get a stroked sketch instead. */
+
+.home-card, .post-item { position: relative; overflow: visible; }
+
+/* Shared silhouette geometry */
+.home-cards .home-card:first-child::before,
+.home-cards .home-card:first-child::after,
+.hero-actions .squish-btn:first-child::after,
+.hero-actions .squish-btn-alt::after {
+    content: "";
+    position: absolute;
+    width: 64px; height: 22px;
+    background: inherit;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 22%27%3E%3Cpath d=%27M0 22 L0 18 C3 18 5 17 6 15 C6 12 8 10 10 10 C9 12 10 14 12 15 C13 6 15 1 19 1 C18 5 19 9 22 11 C24 6 26 5 29 5 C28 8 29 10 32 12 C34 9 36 8 39 9 C38 11 39 13 42 14 C45 14 48 15 52 16 C56 17 60 18 64 18 L64 22 Z%27 fill=%27black%27/%3E%3C/svg%3E") no-repeat center / contain;
+    mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 22%27%3E%3Cpath d=%27M0 22 L0 18 C3 18 5 17 6 15 C6 12 8 10 10 10 C9 12 10 14 12 15 C13 6 15 1 19 1 C18 5 19 9 22 11 C24 6 26 5 29 5 C28 8 29 10 32 12 C34 9 36 8 39 9 C38 11 39 13 42 14 C45 14 48 15 52 16 C56 17 60 18 64 18 L64 22 Z%27 fill=%27black%27/%3E%3C/svg%3E") no-repeat center / contain;
+    pointer-events: none;
+}
+
+/* Card fur: ::before is the outline layer in the tile's border color,
+   nudged up so a rim shows above the surface-colored ::after */
+.home-cards .home-card:first-child::before {
+    background: var(--color-border);
+    top: -18.5px;
+}
+.home-cards .home-card:first-child::after { top: -17px; }
+.home-cards .home-card:first-child::before,
+.home-cards .home-card:first-child::after { left: 12%; }
+
+/* Second home section: mirrored fur on the other side of its lead card */
+.home-section + .home-section .home-cards .home-card:first-child::before,
+.home-section + .home-section .home-cards .home-card:first-child::after {
+    left: 64%;
+    transform: scaleX(-1);
+}
+
+/* Hero buttons carry fluff; their fills read against the page on their
+   own, so no outline layer. Primary: crest on top. Secondary: fur hangs
+   from the bottom-right edge (flipped upside down). */
+.hero-actions .squish-btn:first-child { position: relative; }
+.hero-actions .squish-btn:first-child::after {
+    width: 50px; height: 17px;
+    top: -12px; left: 56%;
+    transform: rotate(3deg);
+}
+.hero-actions .squish-btn-alt { position: relative; }
+.hero-actions .squish-btn-alt::after {
+    width: 50px; height: 17px;
+    bottom: -12px; right: 10%;
+    transform: scaleY(-1) rotate(2deg);
+}
+
+/* Ruled post list: the separator breaks and fur is sketched into the gap */
+:root { --fur-sketch: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 44 18%27%3E%3Cpath d=%27M1 16 C3 16 4 15 5 14 C5 12 6 10 8 10 C7 12 8 13 10 14 C11 6 13 2 16 1 C15 5 16 8 19 10 C21 6 23 5 26 5 C25 8 26 10 29 11 C31 10 32 9 34 10 C34 12 35 13 37 14 C39 15 41 15 43 16%27 stroke=%27%23cbb08a%27 stroke-width=%271.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 fill=%27none%27/%3E%3C/svg%3E"); }
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --fur-sketch: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 44 18%27%3E%3Cpath d=%27M1 16 C3 16 4 15 5 14 C5 12 6 10 8 10 C7 12 8 13 10 14 C11 6 13 2 16 1 C15 5 16 8 19 10 C21 6 23 5 26 5 C25 8 26 10 29 11 C31 10 32 9 34 10 C34 12 35 13 37 14 C39 15 41 15 43 16%27 stroke=%27%2358452f%27 stroke-width=%271.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 fill=%27none%27/%3E%3C/svg%3E"); }
+}
+html[data-theme="dark"] { --fur-sketch: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 44 18%27%3E%3Cpath d=%27M1 16 C3 16 4 15 5 14 C5 12 6 10 8 10 C7 12 8 13 10 14 C11 6 13 2 16 1 C15 5 16 8 19 10 C21 6 23 5 26 5 C25 8 26 10 29 11 C31 10 32 9 34 10 C34 12 35 13 37 14 C39 15 41 15 43 16%27 stroke=%27%2358452f%27 stroke-width=%271.6%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 fill=%27none%27/%3E%3C/svg%3E"); }
+
+.post-item:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    width: 48px; height: 4px;
+    background: var(--color-bg);
+    pointer-events: none;
+}
+.post-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    width: 44px; height: 18px;
+    background: var(--fur-sketch) no-repeat center / contain;
+    pointer-events: none;
+}
+.post-item:nth-of-type(3n+1)::before { left: 70%; }
+.post-item:nth-of-type(3n+1)::after  { left: 70.4%; transform: scaleX(-1); }
+.post-item:nth-of-type(3n+2)::before { left: 18%; }
+.post-item:nth-of-type(3n+2)::after  { left: 18.4%; }
+.post-item:nth-of-type(3n)::before   { left: 44%; }
+.post-item:nth-of-type(3n)::after    { left: 44.4%; }
