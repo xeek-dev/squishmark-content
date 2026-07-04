@@ -9,8 +9,8 @@
 .home-card, .post-item { position: relative; overflow: visible; }
 
 /* Shared silhouette geometry */
-.home-cards .home-card:first-child::before,
-.home-cards .home-card:first-child::after,
+.home-cards .home-card::before,
+.home-cards .home-card::after,
 .hero-actions .squish-btn:first-child::after,
 .hero-actions .squish-btn-alt::after {
     content: "";
@@ -23,21 +23,29 @@
 }
 
 /* Card fur: ::before is the outline layer in the tile's border color,
-   nudged up so a rim shows above the surface-colored ::after */
-.home-cards .home-card:first-child::before {
-    background: var(--color-border);
-    top: -18.5px;
-}
-.home-cards .home-card:first-child::after { top: -17px; }
-.home-cards .home-card:first-child::before,
-.home-cards .home-card:first-child::after { left: 12%; }
+   nudged outward so a rim shows around the surface-colored ::after.
+   Every card gets fur; placement rotates through four variants (top-left,
+   bottom-right, mirrored top, bottom-left) so grid neighbors never match. */
+.home-cards .home-card::before { background: var(--color-border); }
 
-/* Second home section: mirrored fur on the other side of its lead card */
-.home-section + .home-section .home-cards .home-card:first-child::before,
-.home-section + .home-section .home-cards .home-card:first-child::after {
-    left: 64%;
-    transform: scaleX(-1);
-}
+/* variant 1: top, left */
+.home-cards .home-card:nth-child(4n+1)::before { top: -18.5px; left: 12%; }
+.home-cards .home-card:nth-child(4n+1)::after  { top: -17px;   left: 12%; }
+/* variant 2: bottom, right */
+.home-cards .home-card:nth-child(4n+2)::before { bottom: -18.5px; top: auto; left: 68%; transform: scaleY(-1); }
+.home-cards .home-card:nth-child(4n+2)::after  { bottom: -17px;   top: auto; left: 68%; transform: scaleY(-1); }
+/* variant 3: top, right, mirrored */
+.home-cards .home-card:nth-child(4n+3)::before { top: -18.5px; left: 60%; transform: scaleX(-1); }
+.home-cards .home-card:nth-child(4n+3)::after  { top: -17px;   left: 60%; transform: scaleX(-1); }
+/* variant 4: bottom, left, mirrored */
+.home-cards .home-card:nth-child(4n)::before   { bottom: -18.5px; top: auto; left: 16%; transform: scaleY(-1) scaleX(-1); }
+.home-cards .home-card:nth-child(4n)::after    { bottom: -17px;   top: auto; left: 16%; transform: scaleY(-1) scaleX(-1); }
+
+/* Second home section: offset the rotation so sections differ too */
+.home-section + .home-section .home-cards .home-card:nth-child(4n+1)::before { left: 58%; transform: scaleX(-1); }
+.home-section + .home-section .home-cards .home-card:nth-child(4n+1)::after  { left: 58%; transform: scaleX(-1); }
+.home-section + .home-section .home-cards .home-card:nth-child(4n+2)::before { left: 20%; transform: scaleY(-1) scaleX(-1); }
+.home-section + .home-section .home-cards .home-card:nth-child(4n+2)::after  { left: 20%; transform: scaleY(-1) scaleX(-1); }
 
 /* Hero buttons carry fluff; their fills read against the page on their
    own, so no outline layer. Primary: crest on top. Secondary: fur hangs
@@ -73,14 +81,18 @@ html[data-theme="dark"] { --fur-sketch: url("data:image/svg+xml,%3Csvg xmlns=%27
 .post-item:not(:last-child)::after {
     content: "";
     position: absolute;
-    bottom: -8px;
+    /* the sketch baseline sits 2px above its own bottom; -2px puts that
+       baseline exactly on the separator line */
+    bottom: -2px;
     width: 44px; height: 18px;
     background: var(--fur-sketch) no-repeat center / contain;
     pointer-events: none;
 }
+/* sketch is 4px narrower than the erased gap: fixed +2px keeps it centered
+   at any layout width (percent offsets drift as the frame widens) */
 .post-item:nth-of-type(3n+1)::before { left: 70%; }
-.post-item:nth-of-type(3n+1)::after  { left: 70.4%; transform: scaleX(-1); }
+.post-item:nth-of-type(3n+1)::after  { left: calc(70% + 2px); transform: scaleX(-1); }
 .post-item:nth-of-type(3n+2)::before { left: 18%; }
-.post-item:nth-of-type(3n+2)::after  { left: 18.4%; }
+.post-item:nth-of-type(3n+2)::after  { left: calc(18% + 2px); }
 .post-item:nth-of-type(3n)::before   { left: 44%; }
-.post-item:nth-of-type(3n)::after    { left: 44.4%; }
+.post-item:nth-of-type(3n)::after    { left: calc(44% + 2px); }

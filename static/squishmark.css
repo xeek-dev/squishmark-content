@@ -207,3 +207,26 @@ html[data-theme="dark"] {
 @media (prefers-reduced-motion: reduce) {
     .squish-btn:active { transform: none; }
 }
+
+/* ---------- Wide screens: broader frame, two-up cards ---------- */
+@media (min-width: 960px) {
+    :root { --max-width: 1060px; }
+    .home-cards { grid-template-columns: 1fr 1fr; }
+    /* a lone card should span the full row, not sit in half the grid */
+    .home-cards > :only-child { grid-column: 1 / -1; }
+    .hero-tagline { max-width: 40rem; }
+}
+
+/* ---------- Frosted sticky header ---------- */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .site-header {
+        background: color-mix(in srgb, var(--color-header-bg) 74%, transparent);
+        -webkit-backdrop-filter: blur(12px) saturate(1.25);
+        backdrop-filter: blur(12px) saturate(1.25);
+    }
+}
