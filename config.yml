@@ -1,6 +1,6 @@
 site:
   title: "SquishMark"
-  tagline: "the squishy GitHub-powered blog engine"
+  tagline: "the GitHub-powered blog engine"
   description: "SquishMark is a lightweight blogging engine that renders Markdown straight from a GitHub repo. This is its official site, running on SquishMark itself."
   author: "Xeek"
   url: "https://squishmark.dev"
