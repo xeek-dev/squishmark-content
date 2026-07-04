@@ -6,6 +6,14 @@ description: "Release history for SquishMark, newest first. What changed in each
 
 Release history, newest first. Each entry links to its full notes on GitHub. Want the story behind a release? The [blog](/) has posts on the bigger ones.
 
+## [0.6.0](https://github.com/xeek-dev/squishmark/releases/tag/v0.6.0)
+
+Released 2026-07-04. Two caching fixes that make "push it and it's live" true for everyone, plus pages grew an optional table of contents.
+
+- Content updates now fetch at the exact pushed commit, so a push can't briefly resurrect the old version
+- Static files (styles, images, favicons) update on a normal reload instead of lingering for up to a day
+- Pages can opt into a table of contents with `toc: true`; the API explorer no longer occupies /docs in production
+
 ## [0.5.0](https://github.com/xeek-dev/squishmark/releases/tag/v0.5.0)
 
 Released 2026-07-04. Pages can live in subdirectories now, so a site can group related pages into sections like `/guides/setup` instead of keeping everything flat.
