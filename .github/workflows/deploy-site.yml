@@ -1,0 +1,38 @@
+name: Deploy site
+
+# Deploys squishmark.dev by shipping a released engine image from GHCR.
+# Two ways in:
+#   - repository_dispatch "engine-release": sent by the engine repo when a
+#     minor or major release (x.y.0) publishes; deploys automatically.
+#     Patch releases do not auto-deploy.
+#   - workflow_dispatch: manual deploy of any version, for upgrades to a
+#     patch release or rollbacks to an older one.
+on:
+  repository_dispatch:
+    types: [engine-release]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Engine release to deploy (e.g. 1.0.0, or latest)"
+        required: true
+        default: "latest"
+
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy released image
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          VERSION: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.version || inputs.version }}
+        run: |
+          echo "Deploying ghcr.io/xeek-dev/squishmark:${VERSION}"
+          flyctl deploy --config deploy/fly.toml --image "ghcr.io/xeek-dev/squishmark:${VERSION}"
